@@ -19,12 +19,30 @@
 # SERVER_PORT:       The port of the server.
 
 # Add a content type and a blank line
+
 echo "X-COMP-490: ${USER}"
-echo "Content-type: text/plain"
+echo "Content-type: text/html"
 echo ""
 
-if [ -n "${QUERY_STRING}" ] ; then
-   cat  ./${QUERY_STRING}
-fi
+GUESTNAME=`echo "$QUERY_STRING" | grep -oE "(^|[?&])name=[^&]+" | sed "s/%20/ /g" | cut -f 2 -d "="`
+cat <<EOT
+<html>
+<head>
+<title>Display Environment Variables </title>
+</head>
+<body>
+Environment Variables prepared for $GUESTNAME :
+<pre>
+EOT
+/usr/bin/env
+cat <<EOT
 
-printf "hello world"
+</pre>
+
+</body>
+</html>
+EOT
+exit 0
+#if [ -n "${QUERY_STRING}" ] ; then
+#   cat  ./${QUERY_STRING}
+#fi
