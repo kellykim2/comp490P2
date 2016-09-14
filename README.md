@@ -8,5 +8,6 @@ Simple web application
 09/11/2016 modified index.htm to pass values
 09/11/2016 modified simple.cgi to also display customized msg using GET from local env.
 09/12/2016 pushed all commited changes
+09/13/2016 added peek function, currently not working so added remote server call on csun.edu page to fill space.
 
 </pre>
