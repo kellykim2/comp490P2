@@ -6,10 +6,7 @@ Simple web application
 09/11/2016 created index.htm
 09/11/2016 modified simple.cgi to display all env var
 09/11/2016 modified index.htm to pass values
-09/11/2016 modified simple.cgi to also display customized msg using GET
+09/11/2016 modified simple.cgi to also display customized msg using GET from local env.
 09/12/2016 pushed all commited changes
 
-To be added
-consumption of filesystem
-consumption of remote server
 </pre>
