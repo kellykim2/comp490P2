@@ -25,24 +25,28 @@ echo "Content-type: text/html"
 echo ""
 
 GUESTNAME=`echo "$QUERY_STRING" | grep -oE "(^|[?&])name=[^&]+" | sed "s/%20/ /g" | cut -f 2 -d "="`
-cat <<EOT
-<html>
-<head>
-<title>Display Environment Variables </title>
-</head>
-<body>
-Environment Variables prepared for $GUESTNAME :
-<pre>
-EOT
-/usr/bin/env
-cat <<EOT
+#WEBLINK =`echo "$QUERY_STRING" | grep -oE "(^|[?&])link=[^&]+" | sed "s/%20/ /g" | cut -f 2 -d "="`
 
-</pre>
+echo '<html>'
+echo '<head>'
+echo '<title>Display Environment Variables </title>'
+echo '<link rel="stylesheet" href="styles.css">'
+echo '</head>'
+echo '<body>'
+echo 'Environment Variables prepared for' $GUESTNAME 
+echo '<pre>'
 
-</body>
-</html>
-EOT
+		/usr/bin/env
+
+echo '</pre>'
+		#Below is the website you wanted to peek.
+echo 'Sorry ! the peek function is not yet available. So I present you my school!'
+		/usr/bin/curl http://www.csun.edu/
+		#/usr/bin/curl $WEBLINK 
+		
+echo		'</pre>
+	</body>
+	</html>	'
+
 exit 0
-#if [ -n "${QUERY_STRING}" ] ; then
-#   cat  ./${QUERY_STRING}
-#fi
+
